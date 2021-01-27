@@ -1,34 +1,21 @@
 <?php
 
-
 namespace JWTools;
-
 
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Lcobucci\JWT\Signer\Key\InMemory;
 
-class JWToolsCfg
-{
-
+class JWToolsCfg{
     public static $issuedBy = "17486341@qq.com";
     public static $permittedFor = "";
 
 
-    protected static $base64 = "X19NakF5TVM4eEx6RTVMMWx2ZFNkeVpTQm9ZWEJ3ZVNCMGJ5Qm1hWEpsSUcxbElEOD0=";
-    protected static $now;
-    protected static $id = 0;
-    protected static $expiredDay = "37";
+    public static $base64 = "X19NakF5TVM4eEx6RTVMMWx2ZFNkeVpTQm9ZWEJ3ZVNCMGJ5Qm1hWEpsSUcxbElEOD0=";
+    public static $now;
+    public static $id = 0;
+    public static $expiredDay = "37";
 
-    public static function setCfg($base64)
-    {
-        self::$base64 = $base64;
-    }
-
-    public static function setId($id)
-    {
-        return self::$id = $id;
-    }
 
     public static function getConfig()
     {
@@ -41,7 +28,6 @@ class JWToolsCfg
         );
         return $configuration;
     }
-
 
     public static function getNow()
     {
@@ -56,10 +42,9 @@ class JWToolsCfg
         self::$expiredDay = $day;
     }
 
-    protected static function getExpiresAt()
+    public static function getExpiresAt()
     {
         return self::getNow()->modify("+" . static::$expiredDay . " day");
     }
-
 
 }
